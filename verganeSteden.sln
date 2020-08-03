@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentation\Presentation.csproj", "{76B587EB-46C1-41F5-883F-C3540CF5B992}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation", "Presentation\Presentation.csproj", "{76B587EB-46C1-41F5-883F-C3540CF5B992}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{BE7DE76A-DE33-4110-B1A7-87833C45840F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VerganeSteden", "Business\VerganeSteden.csproj", "{BE7DE76A-DE33-4110-B1A7-87833C45840F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessTests", "BusinessTests\BusinessTests.csproj", "{3366C369-D039-4665-AC37-1A16696CDEC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VerganeStedenTests", "BusinessTests\VerganeStedenTests.csproj", "{3366C369-D039-4665-AC37-1A16696CDEC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
