@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using Business.Enum;
-using Business.GameObjects;
+using VerganeSteden.Enum;
 
 namespace VerganeSteden.GameObjects
 {
@@ -9,5 +8,8 @@ namespace VerganeSteden.GameObjects
         List<IKaart> Stapel { get; }
         Kleur Kleur { get; set; }
         int Waarde { get; }
+
+        void SpeelKaart(IKaart kaart);
+        bool MagKaartSpelen(IKaart kaart);
     }
 }

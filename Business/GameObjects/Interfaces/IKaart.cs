@@ -1,10 +1,11 @@
-﻿using Business.Enum;
+﻿using VerganeSteden.Enum;
 
-namespace Business.GameObjects
+namespace VerganeSteden.GameObjects
 {
     public interface IKaart
     {
         Kleur Kleur { get; set; }
         int Waarde { get; set; }
+        bool IsVermenigvuldiger { get; set; }
     }
 }

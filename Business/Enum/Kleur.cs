@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Business.Enum
+namespace VerganeSteden.Enum
 {
     public enum Kleur
     {
