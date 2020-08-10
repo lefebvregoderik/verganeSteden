@@ -28,7 +28,7 @@ namespace VerganeSteden.GameObjects
             }
         }
 
-        public void SpeelKaart(IKaart kaart)
+        public IOntdekkingsStapel SpeelKaart(IKaart kaart)
         {
             if (!MagKaartSpelen(kaart))
             {
@@ -36,6 +36,8 @@ namespace VerganeSteden.GameObjects
             }
 
             Stapel.Add(kaart);
+
+            return this;
         }
 
         public bool MagKaartSpelen(IKaart kaart)

@@ -9,7 +9,7 @@ namespace VerganeSteden.GameObjects
         Kleur Kleur { get; set; }
         int Waarde { get; }
 
-        void SpeelKaart(IKaart kaart);
+        IOntdekkingsStapel SpeelKaart(IKaart kaart);
         bool MagKaartSpelen(IKaart kaart);
     }
 }

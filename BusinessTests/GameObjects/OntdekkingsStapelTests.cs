@@ -28,7 +28,7 @@ namespace VerganeStedenTests
             int waarde = 7;
             Kaart kaart = new Kaart { Waarde = waarde };
             OntdekkingsStapel ontdekkingsStapel = new OntdekkingsStapel();
-            ontdekkingsStapel.Stapel.Add(kaart);
+            ontdekkingsStapel.SpeelKaart(kaart);
 
             // Act & Assert
             ontdekkingsStapel.Waarde.Should().Be(waarde + OntdekkingsStapel.startwaarde);
@@ -38,19 +38,14 @@ namespace VerganeStedenTests
         public void Waarde_StapelMetMinderDan8Kaarten_WordtNietVerhoogdMetBonus()
         {
             // Arrange
-            Kaart kaart1 = new Kaart { Waarde = 1 };
-            Kaart kaart2 = new Kaart { Waarde = 2 };
-            Kaart kaart3 = new Kaart { Waarde = 3 };
-            Kaart kaart4 = new Kaart { Waarde = 4 };
-            Kaart kaart5 = new Kaart { Waarde = 5 };
-            Kaart kaart6 = new Kaart { Waarde = 6 };
             OntdekkingsStapel ontdekkingsStapel = new OntdekkingsStapel();
-            ontdekkingsStapel.Stapel.Add(kaart1);
-            ontdekkingsStapel.Stapel.Add(kaart2);
-            ontdekkingsStapel.Stapel.Add(kaart3);
-            ontdekkingsStapel.Stapel.Add(kaart4);
-            ontdekkingsStapel.Stapel.Add(kaart5);
-            ontdekkingsStapel.Stapel.Add(kaart6);
+            ontdekkingsStapel.
+                SpeelKaart(new Kaart { Waarde = 1 }).
+                SpeelKaart(new Kaart { Waarde = 2 }).
+                SpeelKaart(new Kaart { Waarde = 3 }).
+                SpeelKaart(new Kaart { Waarde = 4 }).
+                SpeelKaart(new Kaart { Waarde = 5 }).
+                SpeelKaart(new Kaart { Waarde = 6 });
             int som = 1 + 2 + 3 + 4 + 5 + 6;
 
             // Act & Assert           
@@ -61,23 +56,16 @@ namespace VerganeStedenTests
         public void Waarde_StapelVanaf8Kaarten_WordtVerhoogdMetBonus()
         {
             // Arrange
-            Kaart kaart1 = new Kaart { Waarde = 1 };
-            Kaart kaart2 = new Kaart { Waarde = 2 };
-            Kaart kaart3 = new Kaart { Waarde = 3 };
-            Kaart kaart4 = new Kaart { Waarde = 4 };
-            Kaart kaart5 = new Kaart { Waarde = 5 };
-            Kaart kaart6 = new Kaart { Waarde = 6 };
-            Kaart kaart7 = new Kaart { Waarde = 7 };
-            Kaart kaart8 = new Kaart { Waarde = 8 };
             OntdekkingsStapel ontdekkingsStapel = new OntdekkingsStapel();
-            ontdekkingsStapel.Stapel.Add(kaart1);
-            ontdekkingsStapel.Stapel.Add(kaart2);
-            ontdekkingsStapel.Stapel.Add(kaart3);
-            ontdekkingsStapel.Stapel.Add(kaart4);
-            ontdekkingsStapel.Stapel.Add(kaart5);
-            ontdekkingsStapel.Stapel.Add(kaart6);
-            ontdekkingsStapel.Stapel.Add(kaart7);
-            ontdekkingsStapel.Stapel.Add(kaart8);
+            ontdekkingsStapel.
+                SpeelKaart(new Kaart { Waarde = 1 }).
+                SpeelKaart(new Kaart { Waarde = 2 }).
+                SpeelKaart(new Kaart { Waarde = 3 }).
+                SpeelKaart(new Kaart { Waarde = 4 }).
+                SpeelKaart(new Kaart { Waarde = 5 }).
+                SpeelKaart(new Kaart { Waarde = 6 }).
+                SpeelKaart(new Kaart { Waarde = 7 }).
+                SpeelKaart(new Kaart { Waarde = 8 });
             int som = 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8;
 
             // Act & Assert
@@ -91,11 +79,13 @@ namespace VerganeStedenTests
             int waarde = 7;
             Kaart kaart7 = new Kaart { Waarde = waarde };
             OntdekkingsStapel ontdekkingsStapel = new OntdekkingsStapel();
-            ontdekkingsStapel.Stapel.Add(vermenigvuldiger);
-            ontdekkingsStapel.Stapel.Add(kaart7);
+            ontdekkingsStapel.
+                SpeelKaart(vermenigvuldiger).
+                SpeelKaart(kaart7);
 
             // Act & Assert
-            ontdekkingsStapel.Waarde.Should().Be(2 * (waarde + OntdekkingsStapel.startwaarde));
+            ontdekkingsStapel.Waarde.Should().
+                Be(2 * (waarde + OntdekkingsStapel.startwaarde));
         }
 
         [Fact]
@@ -106,12 +96,14 @@ namespace VerganeStedenTests
             int waarde = 7;
             Kaart kaart7 = new Kaart { Waarde = waarde };
             OntdekkingsStapel ontdekkingsStapel = new OntdekkingsStapel();
-            ontdekkingsStapel.Stapel.Add(vermenigvuldiger);
-            ontdekkingsStapel.Stapel.Add(vermenigvuldiger);
-            ontdekkingsStapel.Stapel.Add(kaart7);
+            ontdekkingsStapel.
+                SpeelKaart(vermenigvuldiger).
+                SpeelKaart(vermenigvuldiger).
+                SpeelKaart(kaart7);
 
             // Act & Assert
-            ontdekkingsStapel.Waarde.Should().Be(3 * (waarde + OntdekkingsStapel.startwaarde));
+            ontdekkingsStapel.Waarde.Should().
+                    Be(3 * (waarde + OntdekkingsStapel.startwaarde));
         }
 
         [Fact]
@@ -122,10 +114,11 @@ namespace VerganeStedenTests
             int waarde = 7;
             Kaart kaart7 = new Kaart { Waarde = waarde };
             OntdekkingsStapel ontdekkingsStapel = new OntdekkingsStapel();
-            ontdekkingsStapel.Stapel.Add(vermenigvuldiger);
-            ontdekkingsStapel.Stapel.Add(vermenigvuldiger);
-            ontdekkingsStapel.Stapel.Add(vermenigvuldiger);
-            ontdekkingsStapel.Stapel.Add(kaart7);
+            ontdekkingsStapel.
+                SpeelKaart(vermenigvuldiger).
+                SpeelKaart(vermenigvuldiger).
+                SpeelKaart(vermenigvuldiger).
+                SpeelKaart(kaart7);
 
             // Act & Assert
             ontdekkingsStapel.Waarde.Should().Be(4 * (waarde + OntdekkingsStapel.startwaarde));
@@ -135,26 +128,17 @@ namespace VerganeStedenTests
         public void Waarde_StapelVanaf8KaartenMetVermenigvuldiger_WordtBonusNietVermenigvuldigd()
         {
             // Arrange
-            Kaart kaartV = new Kaart { Waarde = 0, IsVermenigvuldiger = true };
-            Kaart kaart1 = new Kaart { Waarde = 1 };
-            Kaart kaart2 = new Kaart { Waarde = 2 };
-            Kaart kaart3 = new Kaart { Waarde = 3 };
-            Kaart kaart4 = new Kaart { Waarde = 4 };
-            Kaart kaart5 = new Kaart { Waarde = 5 };
-            Kaart kaart6 = new Kaart { Waarde = 6 };
-            Kaart kaart7 = new Kaart { Waarde = 7 };
-            Kaart kaart8 = new Kaart { Waarde = 8 };
             OntdekkingsStapel ontdekkingsStapel = new OntdekkingsStapel();
-            ontdekkingsStapel.Stapel.Add(kaartV);
-            ontdekkingsStapel.Stapel.Add(kaart1);
-            ontdekkingsStapel.Stapel.Add(kaart2);
-            ontdekkingsStapel.Stapel.Add(kaart3);
-            ontdekkingsStapel.Stapel.Add(kaart4);
-            ontdekkingsStapel.Stapel.Add(kaart5);
-            ontdekkingsStapel.Stapel.Add(kaart6);
-            ontdekkingsStapel.Stapel.Add(kaart7);
-            ontdekkingsStapel.Stapel.Add(kaart8);
-            int som = 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8;
+            ontdekkingsStapel.
+                SpeelKaart(new Kaart { Waarde = 0, IsVermenigvuldiger = true }).
+                SpeelKaart(new Kaart { Waarde = 1 }).
+                SpeelKaart(new Kaart { Waarde = 2 }).
+                SpeelKaart(new Kaart { Waarde = 3 }).
+                SpeelKaart(new Kaart { Waarde = 4 }).
+                SpeelKaart(new Kaart { Waarde = 5 }).
+                SpeelKaart(new Kaart { Waarde = 6 }).
+                SpeelKaart(new Kaart { Waarde = 7 });
+            int som = 1 + 2 + 3 + 4 + 5 + 6 + 7;
 
             // Act & Assert
             ontdekkingsStapel.Waarde.Should().
@@ -165,13 +149,13 @@ namespace VerganeStedenTests
         public void KaartSpelen_MetOngeldigeKaart_Smijt_OngeldigeZetException()
         {
             // Arrange
-            Kaart kaart2 = new Kaart { Waarde = 2 };
             OntdekkingsStapel ontdekkingsStapel = new OntdekkingsStapel();
-            ontdekkingsStapel.Stapel.Add(kaart2);
-            Kaart kaart1 = new Kaart { Waarde = 1 };
+            ontdekkingsStapel.SpeelKaart(new Kaart { Waarde = 2 });
 
-            // Act & Assert
-            Action act = () => ontdekkingsStapel.SpeelKaart(kaart1);
+            // Act 
+            Action act = () => ontdekkingsStapel.SpeelKaart(new Kaart { Waarde = 1 });
+
+            // Assert
             act.Should().Throw<OngeldigeZetException>();
         }
 
@@ -179,13 +163,13 @@ namespace VerganeStedenTests
         public void KaartSpelen_MetgeldigeKaart_SmijtGeen_OngeldigeZetException()
         {
             // Arrange
-            Kaart kaart1 = new Kaart { Waarde = 1 };
             OntdekkingsStapel ontdekkingsStapel = new OntdekkingsStapel();
-            ontdekkingsStapel.Stapel.Add(kaart1);
-            Kaart kaart2 = new Kaart { Waarde = 2 };
+            ontdekkingsStapel.SpeelKaart(new Kaart { Waarde = 1 });
 
-            // Act & Assert
-            Action act = () => ontdekkingsStapel.SpeelKaart(kaart2);
+            // Act 
+            Action act = () => ontdekkingsStapel.SpeelKaart(new Kaart { Waarde = 2 });
+
+            // Assert
             act.Should().NotThrow<OngeldigeZetException>();
         }
 
@@ -193,9 +177,8 @@ namespace VerganeStedenTests
         public void KaartSpelen_MetgeldigeKaart_VoegtKaartToeAanStapel()
         {
             // Arrange
-            Kaart kaart1 = new Kaart { Waarde = 1 };
             OntdekkingsStapel ontdekkingsStapel = new OntdekkingsStapel();
-            ontdekkingsStapel.Stapel.Add(kaart1);
+            ontdekkingsStapel.Stapel.Add(new Kaart { Waarde = 1 });
             Kaart kaart2 = new Kaart { Waarde = 2 };
 
             // Act 
@@ -224,7 +207,7 @@ namespace VerganeStedenTests
             Kaart groene2Kaart = new Kaart { Kleur = Kleur.groen, Waarde = 2 };
             Kaart groene7Kaart = new Kaart { Kleur = Kleur.groen, Waarde = 7 };
             OntdekkingsStapel groeneStapel = new OntdekkingsStapel { Kleur = Kleur.groen };
-            groeneStapel.Stapel.Add(groene7Kaart);
+            groeneStapel.SpeelKaart(groene7Kaart);
 
             // Act && Assert
             groeneStapel.MagKaartSpelen(groene2Kaart).Should().BeFalse();
